@@ -1,12 +1,26 @@
 import React, { Component } from "react";
+import axios from "axios";
+import SearchResult from "./components/SearchResult";
 
 export class App extends Component {
   state = {
     searchText: "",
+    searchResult: [],
   };
 
   onChangeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
+  };
+
+  searchReq = async (e) => {
+    try {
+      const response = await axios.get("/api", {
+        params: { searchText: this.state.searchText },
+      });
+      this.setState({ searchResult: response.data.result });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   render() {
@@ -21,10 +35,11 @@ export class App extends Component {
             name="searchText"
             onChange={this.onChangeHandler}
           />
-          <button type="submit" onClick={this.XXXXX}>
+          <button type="submit" onClick={this.searchReq}>
             Search
           </button>
         </form>
+        <SearchResult searchResult={this.state.searchResult} />
       </div>
     );
   }
