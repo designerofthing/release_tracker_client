@@ -1,15 +1,15 @@
 describe("User can search for actor/movie", () => {
-  before(() => {
+  beforeEach(() => {
     cy.server();
     cy.route({
       method: "GET",
-      url: "http://localhost:3000/api",
+      url: "http://localhost:3000/api/v1/search",
       response: "fixture:search_response.json",
     });
     cy.visit("/");
   });
   describe("User enter search param and clicks on Search", () => {
-    before(() => {
+    beforeEach(() => {
       cy.get("input#search").type("Tom Hanks");
       cy.get("button").contains("Search").click();
     });
