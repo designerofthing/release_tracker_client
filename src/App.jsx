@@ -43,6 +43,13 @@ export class App extends Component {
           </button>
         </form>
         <SearchResult searchResult={this.state.searchResult} />
+        <p>
+          Powered by{" "}
+          <img
+            style={{ width: "150px" }}
+            src={require("./images/apilogo.svg")}
+          />
+        </p>
       </div>
     );
   }
