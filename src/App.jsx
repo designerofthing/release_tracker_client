@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import SearchResult from "./components/SearchResult";
+import Search from "./components/Search";
 
 export class App extends Component {
   state = {
@@ -10,6 +10,7 @@ export class App extends Component {
   };
 
   onChangeHandler = (e) => {
+    debugger;
     this.setState({ [e.target.name]: e.target.value });
   };
 
@@ -29,20 +30,12 @@ export class App extends Component {
     return (
       <div>
         <h1>Release Tracker</h1>
-
-        <form>
-          <p>{this.state.message}</p>
-          <input
-            type="text"
-            id="search"
-            name="searchText"
-            onChange={this.onChangeHandler}
-          />
-          <button type="submit" onClick={this.searchReq}>
-            Search
-          </button>
-        </form>
-        <SearchResult searchResult={this.state.searchResult} />
+        <p>{this.state.message}</p>
+        <Search
+          searchResult={this.state.searchResult}
+          onChangeHandler={this.onChangeHandler}
+          searchReq={this.searchReq}
+        />
         <p>
           Powered by{" "}
           <img
