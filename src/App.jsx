@@ -6,6 +6,7 @@ export class App extends Component {
   state = {
     searchText: "",
     searchResult: [],
+    message: "",
   };
 
   onChangeHandler = (e) => {
@@ -18,7 +19,7 @@ export class App extends Component {
       const response = await axios.get("/api/v1/search");
       this.setState({ searchResult: response.data.result });
     } catch (error) {
-      console.log(error);
+      this.setState({ message: error });
     }
   };
 
@@ -28,6 +29,7 @@ export class App extends Component {
         <h1>Release Tracker</h1>
 
         <form>
+          <p>{this.state.message}</p>
           <input
             type="text"
             id="search"
