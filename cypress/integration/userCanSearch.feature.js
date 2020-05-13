@@ -3,7 +3,7 @@ describe("User can search for actor/movie", () => {
     cy.server();
     cy.route({
       method: "GET",
-      url: "http://localhost:3000/api/v1/search",
+      url: "http://localhost:3000/api/v1/search*",
       response: "fixture:search_response.json",
     });
     cy.visit("/");

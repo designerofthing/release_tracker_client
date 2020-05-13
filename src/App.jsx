@@ -16,7 +16,9 @@ export class App extends Component {
   searchReq = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get("/api/v1/search");
+      const response = await axios.get("/api/v1/search", {
+        params: { searchText: this.state.searchText },
+      });
       this.setState({ searchResult: response.data.result });
     } catch (error) {
       this.setState({ message: error });
