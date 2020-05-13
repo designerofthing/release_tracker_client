@@ -20,7 +20,7 @@ describe("User can search for actor/movie", () => {
         cy.contains("Cast Away");
         cy.contains("2000");
         cy.contains("Producer");
-        cy.find("image").should("be.visible");
+        cy.get("img").should("be.visible");
       });
     });
 
@@ -30,7 +30,7 @@ describe("User can search for actor/movie", () => {
         cy.contains("Scream 2");
         cy.contains("1997");
         cy.contains("Actor");
-        cy.find("image").should("be.visible");
+        cy.get("img").should("be.visible");
       });
     });
 
@@ -40,7 +40,7 @@ describe("User can search for actor/movie", () => {
         cy.contains("Abnormal Attraction");
         cy.contains("2018");
         cy.contains("Actor");
-        cy.find("image").should("be.visible");
+        cy.get("img").should("be.visible");
       });
     });
   });
