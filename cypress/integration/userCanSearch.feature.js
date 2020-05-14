@@ -1,15 +1,13 @@
 describe("User can search for actor/movie", () => {
-  beforeEach(() => {
-    cy.server();
-    cy.route({
-      method: "GET",
-      url: "http://localhost:3000/api/v1/search*",
-      response: "fixture:search_response.json",
-    });
-    cy.visit("/");
-  });
   describe("User enter search param and clicks on Search", () => {
     beforeEach(() => {
+      cy.server();
+      cy.route({
+        method: "GET",
+        url: "http://localhost:3000/api/v1/search*",
+        response: "fixture:search_response.json",
+      });
+      cy.visit("/");
       cy.get("input#search").type("Tom Hanks");
       cy.get("button").contains("Search").click();
     });
@@ -42,6 +40,24 @@ describe("User can search for actor/movie", () => {
         cy.contains("Actor");
         cy.get("img").should("be.visible");
       });
+    });
+  });
+
+  describe("User enter search param and clicks on Search", () => {
+    beforeEach(() => {
+      cy.server();
+      cy.route({
+        method: "GET",
+        url: "http://localhost:3000/api/v1/search*",
+        response: "",
+      });
+      cy.visit("/");
+      cy.get("input#search").type("dfgdfgdfgdfgd");
+      cy.get("button").contains("Search").click();
+    });
+
+    it("User receives empty response", () => {
+      cy.get("#message").should("contain", "No Result Found");
     });
   });
 });

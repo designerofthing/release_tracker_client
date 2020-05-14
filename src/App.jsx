@@ -9,8 +9,7 @@ export class App extends Component {
     message: "",
   };
 
-  onChangeHandler = (e) => {
-    debugger;
+  searchHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
@@ -20,7 +19,10 @@ export class App extends Component {
       const response = await axios.get("/api/v1/search", {
         params: { searchText: this.state.searchText },
       });
-      this.setState({ searchResult: response.data.result });
+
+      response.data === ""
+        ? this.setState({ message: "No Result Found" })
+        : this.setState({ searchResult: response.data.result });
     } catch (error) {
       this.setState({ message: error });
     }
@@ -30,10 +32,10 @@ export class App extends Component {
     return (
       <div>
         <h1>Release Tracker</h1>
-        <p>{this.state.message}</p>
+        <p id="message">{this.state.message}</p>
         <Search
           searchResult={this.state.searchResult}
-          onChangeHandler={this.onChangeHandler}
+          searchHandler={this.searchHandler}
           searchReq={this.searchReq}
         />
         <p>
