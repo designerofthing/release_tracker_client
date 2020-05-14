@@ -49,7 +49,7 @@ describe("User can search for actor/movie", () => {
       cy.route({
         method: "GET",
         url: "http://localhost:3000/api/v1/search*",
-        response: "",
+        response: { message: "no results" },
       });
       cy.visit("/");
       cy.get("input#search").type("dfgdfgdfgdfgd");
@@ -57,7 +57,7 @@ describe("User can search for actor/movie", () => {
     });
 
     it("User receives empty response", () => {
-      cy.get("#message").should("contain", "No Result Found");
+      cy.get("#message").should("contain", "no results");
     });
   });
 });

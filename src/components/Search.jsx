@@ -3,8 +3,9 @@ import React from "react";
 const Search = ({ searchResult, searchHandler, searchReq }) => {
   let imgPath;
   let sResult;
-  if (searchResult.length > 0) {
-    sResult = searchResult.map((result) => {
+
+  searchResult &&
+    (sResult = searchResult.map((result) => {
       imgPath = result.pic;
       return (
         <tr key={"result-item-" + result.id} id={"result-item-" + result.id}>
@@ -17,8 +18,7 @@ const Search = ({ searchResult, searchHandler, searchReq }) => {
           <td>{result.latestProd.role}</td>
         </tr>
       );
-    });
-  }
+    }));
 
   return (
     <>

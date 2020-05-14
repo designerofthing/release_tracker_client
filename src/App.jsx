@@ -19,10 +19,9 @@ export class App extends Component {
       const response = await axios.get("/api/v1/search", {
         params: { searchText: this.state.searchText },
       });
-
-      response.data === ""
-        ? this.setState({ message: "No Result Found" })
-        : this.setState({ searchResult: response.data.result });
+      response.data.message !== "" &&
+        this.setState({ message: response.data.message });
+      this.setState({ searchResult: response.data.result });
     } catch (error) {
       this.setState({ message: error });
     }
