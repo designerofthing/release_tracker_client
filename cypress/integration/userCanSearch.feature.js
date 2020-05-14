@@ -43,7 +43,7 @@ describe("User can search for actor/movie", () => {
     });
   });
 
-  describe("User enter search param and clicks on Search", () => {
+  describe("User dont get any result", () => {
     beforeEach(() => {
       cy.server();
       cy.route({

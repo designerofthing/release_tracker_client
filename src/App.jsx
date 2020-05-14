@@ -38,7 +38,7 @@ export class App extends Component {
           searchReq={this.searchReq}
         />
         <p>
-          Powered by{" "}
+          Powered by
           <img
             style={{ width: "150px" }}
             src={require("./images/apilogo.svg")}
