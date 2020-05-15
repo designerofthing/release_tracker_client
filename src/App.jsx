@@ -64,7 +64,7 @@ export class App extends Component {
         <p id="message">{this.state.message}</p>
 
         {moviePersonRender ? (
-          <MoviePerson moviePersonResult={} />
+          <MoviePerson moviePersonResult={this.state.moviePersonResult} />
         ) : (
           <>
             <Search
