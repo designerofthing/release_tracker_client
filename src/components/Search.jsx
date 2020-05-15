@@ -9,19 +9,20 @@ const Search = ({ searchResult, searchReq, moviePersonSearch }) => {
       imgPath = result.pic;
       return (
         <tr key={"result-item-" + result.id} id={"result-item-" + result.id}>
-          <button
-            onClick={(e) => {
-              moviePersonSearch(e);
-            }}
-            id={"track-" + result.id}
-            data-id={result.id}
-          >
-            track
-          </button>
           <td>
             <img src={imgPath} height="35" alt={result.name} />
           </td>
-          <td>{result.name}</td>
+          <td>
+            <a
+              data-id={result.id}
+              id={"track-" + result.id}
+              onClick={(e) => {
+                moviePersonSearch(e);
+              }}
+            >
+              {result.name}
+            </a>
+          </td>
           <td>{result.latestProd.movieName}</td>
           <td>{result.latestProd.year}</td>
           <td>{result.latestProd.role}</td>
