@@ -1,10 +1,11 @@
 import React from 'react'
+import { Container } from 'semantic-ui-react'
 
 const AccountBar = ({goToLoginPage}) => {
   return (
-    <div>
+    <Container align="right" style={{padding: "20px"}}>
       <a onClick={goToLoginPage}>Login</a>
-    </div>
+    </Container>
   )
 }
 

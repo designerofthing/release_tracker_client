@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Container, Image, Table, Segment, Grid, GridColumn } from "semantic-ui-react";
+import DefaultPicture from '../images/defaultpic.jpeg'
 
 class Search extends Component {
   state = {
@@ -40,36 +42,46 @@ class Search extends Component {
           )
         }
   
-        imgPath = result.picture;
+        imgPath = DefaultPicture
   
         return (
-          <tr key={"result-item-" + result.id} id={"result-item-" + result.id}>
-            <td>
-              <img src={imgPath} height="35" alt={result.name} />
-            </td>
-            <td>{result.name}</td>
-            <td>{result.known_for_movie}</td>
-            <td>{result.known_for_role}</td>
+          <Table.Row key={"result-item-" + result.id} id={"result-item-" + result.id}>
+            <Table.Cell>
+              <Image src={imgPath} size="mini" alt={result.name} style={{paddingRight: "10px"}}/>
+            </Table.Cell>
+            <Table.Cell>{result.name}</Table.Cell>
+            <Table.Cell>{result.known_for_role === "Acting" ? "Actor" : "Director"} ({result.known_for_movie})</Table.Cell>
             {button}
-          </tr>
+          </Table.Row>
         );
       }));
   
     return (
-      <>
-        <form onSubmit={this.searchReq} >
-          <input
-            type="text"
-            id="search"
-            name="searchText"
-          />
-          <button type="submit">
-            Search
-          </button>
-        </form>
-        <p id="message">{this.state.message}</p>
-        <div>{sResult}</div>
-      </>
+      <Grid relaxed fluid>
+        <Grid.Column>
+        </Grid.Column>
+        <Grid.Column width={5}>
+          <Segment style={{height: "100%"}}>Genre thing placeholder</Segment>
+        </Grid.Column>
+        <Grid.Column>
+        </Grid.Column>
+        <Grid.Column width={8}>
+          <Container align="left">
+            <form onSubmit={this.searchReq} >
+              <input
+                type="text"
+                id="search"
+                name="searchText"
+              />
+              <button type="submit">
+                Search
+              </button>
+            </form>
+            <p id="message">{this.state.message}</p>
+            <Table padded compact>{sResult}</Table>
+          </Container>
+        </Grid.Column>
+      </Grid>
     );
 
   }
