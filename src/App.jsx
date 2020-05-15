@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Search from "./components/Search";
 import Genres from "./components/Genres";
+import MoviePerson from "./components/MoviePerson";
 
 export class App extends Component {
   state = {
@@ -56,16 +57,25 @@ export class App extends Component {
   };
 
   render() {
+    let moviePersonRender = this.state.moviePersonResult.length > 0;
     return (
       <div>
         <h1>Release Tracker</h1>
         <p id="message">{this.state.message}</p>
-        <Search
-          searchResult={this.state.searchResult}
-          searchReq={this.searchReq}
-          moviePersonSearch={this.moviePersonSearch}
-        />
-        <Genres genresHandler={this.genresHandler} />
+
+        {moviePersonRender ? (
+          <MoviePerson moviePersonResult={} />
+        ) : (
+          <>
+            <Search
+              searchResult={this.state.searchResult}
+              searchReq={this.searchReq}
+              moviePersonSearch={this.moviePersonSearch}
+            />
+            <Genres genresHandler={this.genresHandler} />
+          </>
+        )}
+
         <p>
           Powered by
           <img
