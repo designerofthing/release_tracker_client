@@ -20,7 +20,7 @@ describe('logged in users can track people', () => {
   })
 
   it('not logged in user cannot see track button', () => {
-    cy.get('#result-item-1').within(() => {
+    cy.get('#result-item-2888').within(() => {
       cy.get('button').contains('track').should('not.exist')
     })
   })
