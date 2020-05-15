@@ -38,6 +38,7 @@ export class App extends Component {
       });
       this.setState({ moviePersonResult: response.data.result.movies });
     } catch (error) {
+      debugger;
       let errorMessage = error.response.data.error_message || error.message;
       this.setState({ message: errorMessage });
     }
@@ -75,6 +76,7 @@ export class App extends Component {
             moviePersonResult={this.state.moviePersonResult}
             activeName={this.state.activeName}
             resetMoviePerson={this.resetMoviePerson}
+            message={this.state.message}
           />
         ) : (
           <>

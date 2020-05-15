@@ -92,4 +92,21 @@ describe("User can track one person", () => {
       cy.get("button").should("contain", "Search");
     });
   });
+
+  describe("with no result", () => {
+    beforeEach(() => {
+      cy.server();
+      cy.route({
+        method: "GET",
+        url: "http://localhost:3000/api/v1/movie_person/*",
+        response: { error_message: "No result found!" },
+        status: 400,
+      });
+      cy.get("#track-1").click();
+    });
+
+    it("gives error message", () => {
+      cy.get("#message").should("contain", "No result found!");
+    });
+  });
 });
