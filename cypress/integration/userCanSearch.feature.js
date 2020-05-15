@@ -92,7 +92,10 @@ describe("User can search for actor/movie", () => {
     });
 
     it("User receives empty response", () => {
-      cy.get("#message").should("contain", "query must be provided");
+      cy.get("#message").should(
+        "contain",
+        "Request failed with status code 400"
+      );
     });
   });
 });

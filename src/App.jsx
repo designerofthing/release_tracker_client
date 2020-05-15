@@ -28,7 +28,6 @@ export class App extends Component {
         <p id="message">{this.state.message}</p>
         <Search
           searchResult={this.state.searchResult}
-          searchHandler={this.searchHandler}
           searchReq={this.searchReq}
         />
         <p>

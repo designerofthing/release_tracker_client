@@ -1,6 +1,6 @@
 import React from "react";
 
-const Search = ({ searchResult, searchHandler, searchReq }) => {
+const Search = ({ searchResult, searchReq }) => {
   let imgPath;
   let sResult;
 
