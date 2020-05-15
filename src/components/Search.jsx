@@ -1,6 +1,6 @@
 import React from "react";
 
-const Search = ({ searchResult, searchReq }) => {
+const Search = ({ searchResult, searchReq, moviePersonSearch }) => {
   let imgPath;
   let sResult;
 
@@ -9,6 +9,14 @@ const Search = ({ searchResult, searchReq }) => {
       imgPath = result.pic;
       return (
         <tr key={"result-item-" + result.id} id={"result-item-" + result.id}>
+          <button
+            onClick={(e) => {
+              moviePersonSearch(e);
+            }}
+            id={"track-" + result.id}
+          >
+            track
+          </button>
           <td>
             <img src={imgPath} height="35" alt={result.name} />
           </td>
@@ -16,7 +24,6 @@ const Search = ({ searchResult, searchReq }) => {
           <td>{result.latestProd.movieName}</td>
           <td>{result.latestProd.year}</td>
           <td>{result.latestProd.role}</td>
-          <button id={"track-"+ result.id}>track</button>
         </tr>
       );
     }));
