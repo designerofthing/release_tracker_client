@@ -16,6 +16,7 @@ const Search = ({ searchResult, searchReq }) => {
           <td>{result.latestProd.movieName}</td>
           <td>{result.latestProd.year}</td>
           <td>{result.latestProd.role}</td>
+          <button id={"track-"+ result.id}>track</button>
         </tr>
       );
     }));
