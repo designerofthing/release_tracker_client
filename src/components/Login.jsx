@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
 
 export default class Login extends Component {
-  state = {
-
-  }
-
-
 
   render() {
     return (
       <div>
+        <h2>Log in</h2>
         <form>
           <label for="email">Email</label>
           <input name="email" type="email" id="email"></input>

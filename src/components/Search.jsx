@@ -29,13 +29,13 @@ class Search extends Component {
         if (this.props.authenticated && !result.tracked) {
           button = (
             <td>
-              <button id="track-btn" onClick={() => {this.trackHandler(result.id)}}>Track</button> 
+              <button id="track-btn" onClick={() => {this.trackHandler(result.id)}}>track</button> 
             </td>
           )
         } else if (this.props.authenticated){
           button = (
             <td>
-              <button id="track-btn" onClick={() => {alert("This should be an untrack button later")}}>Tracked</button> 
+              <button id="track-btn" onClick={() => {alert("This should be an untrack button later")}}>tracked</button> 
             </td>
           )
         }

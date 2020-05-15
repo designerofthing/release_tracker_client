@@ -15,7 +15,7 @@ describe('logged in users can track people', () => {
       response: 'fixture:search_response.json',
     })
     cy.visit('/')
-    cy.get("input#search").type("Tom Hanks");
+    cy.get("input#search").type("Will Smith");
     cy.get("button").contains("Search").click();
   })
 
@@ -25,7 +25,7 @@ describe('logged in users can track people', () => {
     })
   })
   
-  it('successfully logged in user', () => {
+  describe('successfully logged in user', () => {
     beforeEach(() => {
       cy.get('#account-bar').within(() => {
         cy.get('button').contains('Sign in').click()
@@ -39,17 +39,23 @@ describe('logged in users can track people', () => {
     })
 
     it('can see track button', () => {
-      cy.get('#result-item-').first().within(() => {
+      cy.get('#result-item-234120').within(() => {
         cy.get('button').contains('track').should('exist')
       })
     })
     
     it('can click the button and get a response from server', () => {
-      cy.get('#result-item-').first().within(() => {
+      cy.get('#result-item-234120').within(() => {
         cy.get('button').contains('track').click()
       })
-      cy.get('#result-item-').first().within(() => {
+      cy.get('#result-item-234120').within(() => {
         cy.get('button').should('contain', 'tracked')
+      })
+    })
+
+    it('already tracked person has button saying "tracked"', () => {
+      cy.get('#result-item-234120').within(() => {
+        cy.get('button').contains('tracked').click()
       })
     })
     
