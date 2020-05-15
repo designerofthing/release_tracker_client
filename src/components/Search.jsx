@@ -14,6 +14,7 @@ const Search = ({ searchResult, searchReq, moviePersonSearch }) => {
               moviePersonSearch(e);
             }}
             id={"track-" + result.id}
+            data-id={result.id}
           >
             track
           </button>

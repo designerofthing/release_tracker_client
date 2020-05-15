@@ -8,6 +8,7 @@ export class App extends Component {
     searchResult: [],
     message: "",
     genresSelected: ["thriller", "drama", "comedy"],
+    moviePersonResult: [],
   };
 
   searchReq = async (e) => {
@@ -16,10 +17,23 @@ export class App extends Component {
       const response = await axios.get("/api/v1/search", {
         params: {
           q: e.target.children.search.value,
-          genres: this.state.genresSelected,
         },
       });
       this.setState({ searchResult: response.data.result });
+    } catch (error) {
+      let errorMessage = error.response.data.error_message || error.message;
+      this.setState({ message: errorMessage });
+    }
+  };
+
+  moviePersonSearch = async (e) => {
+    e.preventDefault();
+    let id = e.target.dataset.id;
+    try {
+      const response = await axios.get(`/api/v1/movie_person/${id}`, {
+        params: { genres: this.state.genresSelected },
+      });
+      this.setState({ moviePersonResult: response.data.result });
     } catch (error) {
       let errorMessage = error.response.data.error_message || error.message;
       this.setState({ message: errorMessage });
@@ -49,6 +63,7 @@ export class App extends Component {
         <Search
           searchResult={this.state.searchResult}
           searchReq={this.searchReq}
+          moviePersonSearch={this.moviePersonSearch}
         />
         <Genres genresHandler={this.genresHandler} />
         <p>
