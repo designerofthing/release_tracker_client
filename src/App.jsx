@@ -4,26 +4,20 @@ import Search from "./components/Search";
 
 export class App extends Component {
   state = {
-    searchText: "",
     searchResult: [],
     message: "",
-  };
-
-  searchHandler = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
   };
 
   searchReq = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.get("/api/v1/search", {
-        params: { searchText: this.state.searchText },
+        params: { q: e.target.children.search.value },
       });
-      response.data.message !== "" &&
-        this.setState({ message: response.data.message });
       this.setState({ searchResult: response.data.result });
     } catch (error) {
-      this.setState({ message: error });
+      let errorMessage = error.response.data.error_message || error.message;
+      this.setState({ message: errorMessage });
     }
   };
 

@@ -22,14 +22,13 @@ const Search = ({ searchResult, searchHandler, searchReq }) => {
 
   return (
     <>
-      <form>
+      <form onSubmit={searchReq} >
         <input
           type="text"
           id="search"
           name="searchText"
-          onChange={(e) => searchHandler(e)}
         />
-        <button type="submit" onClick={(e) => searchReq(e)}>
+        <button type="submit">
           Search
         </button>
       </form>

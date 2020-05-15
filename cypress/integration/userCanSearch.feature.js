@@ -49,7 +49,8 @@ describe("User can search for actor/movie", () => {
       cy.route({
         method: "GET",
         url: "http://localhost:3000/api/v1/search*",
-        response: { message: "no results" },
+        response: { error_message: "no results" },
+        status: 400,
       });
       cy.visit("/");
       cy.get("input#search").type("dfgdfgdfgdfgd");
@@ -58,6 +59,40 @@ describe("User can search for actor/movie", () => {
 
     it("User receives empty response", () => {
       cy.get("#message").should("contain", "no results");
+    });
+  });
+  describe("Query must be provided", () => {
+    beforeEach(() => {
+      cy.server();
+      cy.route({
+        method: "GET",
+        url: "http://localhost:3000/api/v1/search*",
+        response: { error_message: "query must be provided" },
+        status: 400,
+      });
+      cy.visit("/");
+      cy.get("button").contains("Search").click();
+    });
+
+    it("User receives empty response", () => {
+      cy.get("#message").should("contain", "query must be provided");
+    });
+  });
+  describe("Internal server error", () => {
+    beforeEach(() => {
+      cy.server();
+      cy.route({
+        method: "GET",
+        url: "http://localhost:3000/api/v1/search*",
+        response: {},
+        status: 400,
+      });
+      cy.visit("/");
+      cy.get("button").contains("Search").click();
+    });
+
+    it("User receives empty response", () => {
+      cy.get("#message").should("contain", "query must be provided");
     });
   });
 });
