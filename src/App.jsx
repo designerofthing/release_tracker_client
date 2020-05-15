@@ -6,6 +6,7 @@ export class App extends Component {
   state = {
     searchResult: [],
     message: "",
+    genresSelected: {},
   };
 
   searchReq = async (e) => {
@@ -21,6 +22,10 @@ export class App extends Component {
     }
   };
 
+  genresHandler = () => {
+    return 0;
+  };
+
   render() {
     return (
       <div>
@@ -30,7 +35,7 @@ export class App extends Component {
           searchResult={this.state.searchResult}
           searchReq={this.searchReq}
         />
-        <Genres />
+        <Genres genresHandler={this.genresHandler} />
         <p>
           Powered by
           <img
