@@ -21,7 +21,7 @@ export class Genres extends Component {
             this.props.genresHandler(e);
             this.btnActivity(e);
           }}
-          id="#comedy"
+          id="comedy"
           name="comedy"
           active={this.state.comedy ? "active" : ""}
           style={{ display: "block", width: "100px", marginTop: "10px" }}
@@ -34,7 +34,7 @@ export class Genres extends Component {
             this.props.genresHandler(e);
             this.btnActivity(e);
           }}
-          id="#drama"
+          id="drama"
           active={this.state.drama ? "active" : ""}
           name="drama"
           style={{ display: "block", width: "100px", marginTop: "10px" }}
@@ -47,7 +47,7 @@ export class Genres extends Component {
             this.props.genresHandler(e);
             this.btnActivity(e);
           }}
-          id="#thriller"
+          id="thriller"
           name="thriller"
           className={this.state.thriller ? "active" : ""}
           style={{ display: "block", width: "100px", marginTop: "10px" }}

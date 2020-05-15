@@ -1,19 +1,23 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Search from "./components/Search";
+import Genres from "./components/Genres";
 
 export class App extends Component {
   state = {
     searchResult: [],
     message: "",
-    genresSelected: {},
+    genresSelected: ["thriller", "drama", "comedy"],
   };
 
   searchReq = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.get("/api/v1/search", {
-        params: { q: e.target.children.search.value },
+        params: {
+          q: e.target.children.search.value,
+          genres: this.state.genresSelected,
+        },
       });
       this.setState({ searchResult: response.data.result });
     } catch (error) {
@@ -22,8 +26,19 @@ export class App extends Component {
     }
   };
 
-  genresHandler = () => {
-    return 0;
+  genresHandler = (e) => {
+    let selectedGenre = e.target.name;
+    if (this.state.genresSelected.includes(selectedGenre)) {
+      this.setState({
+        genresSelected: this.state.genresSelected.filter(
+          (element) => element !== selectedGenre
+        ),
+      });
+    } else {
+      this.setState({
+        genresSelected: [...this.state.genresSelected, selectedGenre],
+      });
+    }
   };
 
   render() {
