@@ -1,4 +1,5 @@
 import React from "react";
+import Genres from "./components/Genres";
 
 const Search = ({ searchResult, searchReq }) => {
   let imgPath;
@@ -22,15 +23,9 @@ const Search = ({ searchResult, searchReq }) => {
 
   return (
     <>
-      <form onSubmit={searchReq} >
-        <input
-          type="text"
-          id="search"
-          name="searchText"
-        />
-        <button type="submit">
-          Search
-        </button>
+      <form onSubmit={searchReq}>
+        <input type="text" id="search" name="searchText" />
+        <button type="submit">Search</button>
       </form>
       <div>{sResult}</div>
     </>

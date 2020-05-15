@@ -30,6 +30,7 @@ export class App extends Component {
           searchResult={this.state.searchResult}
           searchReq={this.searchReq}
         />
+        <Genres />
         <p>
           Powered by
           <img
