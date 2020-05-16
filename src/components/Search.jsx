@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Container, Image, Table, Segment, Grid, GridColumn } from "semantic-ui-react";
+import { Container, Image, Table, Segment, Grid} from "semantic-ui-react";
 import DefaultPicture from '../images/defaultpic.jpeg'
+import { addToTracked, removeFromTracked } from "../modules/tracking"
 
 class Search extends Component {
   state = {
@@ -22,6 +23,20 @@ class Search extends Component {
     }
   };
 
+  async trackHandler(id,add){
+    if (add) {
+      const response = await addToTracked(id) //add this method in a module, module will grab credentials as header and send to backend
+      if (response.successful) {
+        let searchResult = this.state.searchResult
+        let index = searchResult.findIndex((result) => result.id == id )
+        searchResult[index].tracked = true
+        this.setState({ searchResult })
+      }
+    } else {
+      const response = await removeFromTracked(id) //add this method in a module, module will grab credentials as header and send to backend
+    }
+  }
+
   render() {
     let imgPath, sResult, button;
     let searchResult = this.state.searchResult;
@@ -31,13 +46,13 @@ class Search extends Component {
         if (this.props.authenticated && !result.tracked) {
           button = (
             <td>
-              <button id="track-btn" onClick={() => {this.trackHandler(result.id)}}>track</button> 
+              <button id="track-btn" onClick={() => {this.trackHandler(result.id,true)}}>track</button> 
             </td>
           )
         } else if (this.props.authenticated){
           button = (
             <td>
-              <button id="track-btn" onClick={() => {alert("This should be an untrack button later")}}>tracked</button> 
+              <button id="track-btn" onClick={() => {this.trackHandler(result.id,false)}}>untrack</button> 
             </td>
           )
         }

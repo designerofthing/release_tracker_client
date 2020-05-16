@@ -16,7 +16,7 @@ describe("User can search for actor/movie", () => {
       cy.get("#result-item-2888").within(() => {
         cy.contains("Will Smith");
         cy.contains("Suicide Squad");
-        cy.contains("Acting");
+        cy.contains("Actor");
         cy.get("img").should("be.visible");
       });
     });
@@ -25,7 +25,7 @@ describe("User can search for actor/movie", () => {
       cy.get("#result-item-234120").within(() => {
         cy.contains("William Smith");
         cy.contains("Paddington");
-        cy.contains("Acting");
+        cy.contains("Actor");
         cy.get("img").should("be.visible");
       });
     });
@@ -34,7 +34,7 @@ describe("User can search for actor/movie", () => {
       cy.get("#result-item-102494").within(() => {
         cy.contains("William G. Smith");
         cy.contains("Skeleton Key 2");
-        cy.contains("Acting");
+        cy.contains("Actor");
         cy.get("img").should("be.visible");
       });
     });

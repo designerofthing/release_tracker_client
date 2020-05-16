@@ -49,13 +49,13 @@ describe('logged in users can track people', () => {
         cy.get('button').contains('track').click()
       })
       cy.get('#result-item-234120').within(() => {
-        cy.get('button').should('contain', 'tracked')
+        cy.get('button').should('contain', 'untrack')
       })
     })
 
-    it('already tracked person has button saying "tracked"', () => {
+    it('already tracked person has button saying "untrack"', () => {
       cy.get('#result-item-234120').within(() => {
-        cy.get('button').contains('tracked').click()
+        cy.get('button').should('contain', 'untrack')
       })
     })
     
@@ -68,10 +68,10 @@ describe('logged in users can track people', () => {
           status: 200
         }            
       })
-      cy.get('#result-item-').first().within(() => {
+      cy.get('#result-item-234120').first().within(() => {
         cy.get('button').contains('track').click()
       })
-      cy.get('#result-item-').first().within(() => {
+      cy.get('#result-item-234120').first().within(() => {
         cy.get('button').should('contain', 'track')
       })
       cy.get('#error-message').should('contain', 'You have reached your track limit')
