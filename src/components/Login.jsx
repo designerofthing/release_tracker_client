@@ -13,9 +13,10 @@ export default class Login extends Component {
       e.target.password.value
     );
     if (response.authenticated) {
-      this.setState({ authenticated: true});
+      this.props.globalAuthHandler(true);
     } else {
-      this.setState({ message: response.message });
+      
+      this.setState({ loginMessage: response.message });
     }
   };
 

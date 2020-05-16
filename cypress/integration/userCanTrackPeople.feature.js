@@ -21,14 +21,23 @@ describe('logged in users can track people', () => {
 
   it('not logged in user cannot see track button', () => {
     cy.get('#result-item-2888').within(() => {
-      cy.get('button').contains('track').should('not.exist')
+      cy.get('button').contains('untrack').should('not.exist')
     })
   })
   
   describe('successfully logged in user', () => {
     beforeEach(() => {
+      cy.server()
+      cy.route({
+        method: 'POST',
+        url: 'http://localhost:3000/api/v1/auth/sign_in',
+        response: 'fixture:login.json',
+        headers: {
+          status: 200
+        }
+      })
       cy.get('#account-bar').within(() => {
-        cy.get('button').contains('Sign in').click()
+        cy.get('#login-link').click()
       })
       cy.get("#login-form").within(() => {
         cy.get("#email").type("user@mail.com");

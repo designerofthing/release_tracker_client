@@ -1,12 +1,12 @@
 import React, { Component } from "react";
+import { Container } from 'semantic-ui-react'
+import axios from "axios"
 import Search from "./components/Search";
 import Genres from "./components/Genres";
 import MoviePerson from "./components/MoviePerson";
 import AccountBar from './components/AccountBar';
 import Login from './components/Login'
 import SignUp from './components/SignUp'
-import { Container } from 'semantic-ui-react'
-import axios from "axios"
 
 export class App extends Component {
   state = {
@@ -56,8 +56,11 @@ export class App extends Component {
   };
 
   goToPage = (page) => {
-    debugger;
-    this.setState({ page: page })
+    this.setState({ page })
+  }
+
+  globalAuthHandler = (authenticated) => {
+    this.setState({ authenticated })
   }
 
   render() {
@@ -66,7 +69,7 @@ export class App extends Component {
       case "search":
         main = 
           <Search 
-            authenticated = {true}
+            authenticated = {this.state.authenticated}
             message={this.state.message}
             moviePersonShow={this.moviePersonShow}
             genresComp={<Genres genresHandler={this.genresHandler} />}
@@ -76,11 +79,13 @@ export class App extends Component {
         main = <Login
                 goToPage={this.goToPage}
                 authenticated={this.state.authenticated}
+                globalAuthHandler={this.globalAuthHandler}
               />
         break;
       case "signup":
           main = <SignUp
                   goToPage={this.goToPage}
+                  globalAuthHandler={this.globalAuthHandler}
                   authenticated={this.state.authenticated}
                 />
           break;
@@ -101,6 +106,8 @@ export class App extends Component {
           <AccountBar 
             goToPage={ page => this.goToPage(page) }
             authenticated = { this.state.authenticated }
+            globalAuthHandler={ this.globalAuthHandler }
+            uid={this.state.uid}
           />
           <h1 className="ui main header" style={{margin: "60px"}}>Release Tracker</h1>
           {main}

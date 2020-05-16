@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { register } from '../modules/auth'
 
-export default class Login extends Component {
+export default class SignUp extends Component {
   state = {
     signupMessage: ""
   }
@@ -20,7 +20,7 @@ export default class Login extends Component {
       e.target.password_confirmation.value
     );
     if (response.authenticated) {
-      this.setState({ authenticated: true});
+      this.props.globalAuthHandler(true);
     } else {
       this.setState({ signupMessage: response.message });
     }
@@ -31,15 +31,15 @@ export default class Login extends Component {
       <>
         <div>
           <h2>Sign up</h2>
-          <form id="signup-form" onSubmit={this.onLogin}>
+          <form id="signup-form" onSubmit={this.onSignup}>
             <label for="email">Email</label>
             <input name="email" type="email" id="email"></input>
             <label for="password">Password</label>
             <input name="password" type="password" id="password"></input>
-            <label for="password_confirmation">Password</label>
+            <label for="password_confirmation">Password confirmation</label>
             <input name="password_confirmation" type="password" id="password_confirmation"></input>
             <button id="submit">Submit</button>
-            <p id="signup-message">{this.state.loginMessage}</p>
+            <p id="signup-message">{this.state.signupMessage}</p>
           </form>
         </div>
         <div> <a onClick={() => this.props.goToPage('login')}>Already have an account? Log in instead</a></div>
