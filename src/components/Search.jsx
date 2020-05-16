@@ -137,7 +137,7 @@ class Search extends Component {
           </Grid.Column>
         </Grid>
         {this.props.authenticated && (
-          <Button id="btn-tracker" onClick={this.props.showTracked}>
+          <Button id="btn-tracker" onClick={(e) => this.props.showTracked(e)}>
             View Your Tracker
           </Button>
         )}

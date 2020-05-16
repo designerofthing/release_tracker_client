@@ -49,7 +49,7 @@ export class App extends Component {
     headers = JSON.parse(headers);
     try {
       const response = await axios.get("/api/v1/user/", { headers: headers });
-      this.setState({ trackedInfo: response.data.result });
+      this.setState({ trackedInfo: response.data.data, page: "view-tracker" });
     } catch (error) {
       let errorMessage = error.response.data.error_message || error.message;
       this.setState({ message: errorMessage });
@@ -84,6 +84,7 @@ export class App extends Component {
             authenticated={true}
             message={this.state.message}
             moviePersonShow={this.moviePersonShow}
+            showTracked={this.showTracked}
             genresComp={<Genres genresHandler={this.genresHandler} />}
           />
         );
