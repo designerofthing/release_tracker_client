@@ -1,17 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-<<<<<<< HEAD
-import {
-  Container,
-  Image,
-  Table,
-  Segment,
-  Grid,
-  Button,
-} from "semantic-ui-react";
-=======
 import { Container, Image, Table, Header } from "semantic-ui-react";
->>>>>>> d589767997843ecb3fbe9c1a1334c458b636eecb
 import DefaultPicture from "../images/defaultpic.jpeg";
 import { addToTracked, removeFromTracked } from "../modules/tracking";
 
@@ -36,17 +25,6 @@ class Search extends Component {
 
   async trackHandler(id, add) {
     if (add) {
-<<<<<<< HEAD
-      const response = await addToTracked(id); //add this method in a module, module will grab credentials as header and send to backend
-      if (response.successful) {
-        let searchResult = this.state.searchResult;
-        let index = searchResult.findIndex((result) => result.id == id);
-        searchResult[index].tracked = true;
-        this.setState({ searchResult });
-      }
-    } else {
-      const response = await removeFromTracked(id); //add this method in a module, module will grab credentials as header and send to backend
-=======
       const response = await addToTracked(id);
       if (response.successful) {
         this.props.setUserSelection(response.response.data.user_selection);
@@ -60,19 +38,15 @@ class Search extends Component {
       } else {
         this.setState({ message: response.error });
       }
->>>>>>> d589767997843ecb3fbe9c1a1334c458b636eecb
     }
   }
 
   render() {
     let imgPath, sResult, button;
     let searchResult = this.state.searchResult;
-<<<<<<< HEAD
-=======
     let trackedIds = this.props.userTracked.map(
       (person) => person.movie_person_id
     );
->>>>>>> d589767997843ecb3fbe9c1a1334c458b636eecb
 
     searchResult &&
       (sResult = searchResult.map((result) => {
@@ -141,36 +115,6 @@ class Search extends Component {
       }));
 
     return (
-<<<<<<< HEAD
-      <>
-        <Grid relaxed fluid>
-          <Grid.Column></Grid.Column>
-          <Grid.Column width={5}>
-            <Segment style={{ height: "100%" }}>
-              {this.props.genresComp}
-            </Segment>
-          </Grid.Column>
-          <Grid.Column></Grid.Column>
-          <Grid.Column width={8}>
-            <Container align="left">
-              <form onSubmit={this.searchReq}>
-                <input type="text" id="search" name="searchText" />
-                <button type="submit">Search</button>
-              </form>
-              <p id="message">{this.props.message}</p>
-              <Table padded compact>
-                {sResult}
-              </Table>
-            </Container>
-          </Grid.Column>
-        </Grid>
-        {this.props.authenticated && (
-          <Button id="btn-tracker" onClick={(e) => this.props.showTracked(e)}>
-            View Your Tracker
-          </Button>
-        )}
-      </>
-=======
       <Container>
         <Header as="h4">Who do you want to track?</Header>
         <Container align="left" style={{ width: "50%" }}>
@@ -188,7 +132,6 @@ class Search extends Component {
           </Table>
         </Container>
       </Container>
->>>>>>> d589767997843ecb3fbe9c1a1334c458b636eecb
     );
   }
 }

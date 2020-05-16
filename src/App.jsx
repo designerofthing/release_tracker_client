@@ -5,15 +5,8 @@ import Search from "./components/Search";
 import Genres from "./components/Genres";
 import MoviePerson from "./components/MoviePerson";
 import AccountBar from "./components/AccountBar";
-<<<<<<< HEAD
-import ViewTracker from "./components/ViewTracker";
-import Login from "./components/Login";
-import { Container } from "semantic-ui-react";
-import axios from "axios";
-=======
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
->>>>>>> d589767997843ecb3fbe9c1a1334c458b636eecb
 
 export class App extends Component {
   state = {
@@ -24,11 +17,7 @@ export class App extends Component {
     genresSelected: ["thriller", "drama", "comedy"],
     moviePersonResult: [],
     activeName: "",
-<<<<<<< HEAD
-    trackedInfo: {},
-=======
     userTracked: [],
->>>>>>> d589767997843ecb3fbe9c1a1334c458b636eecb
   };
 
   moviePersonShow = async (e) => {
@@ -45,34 +34,12 @@ export class App extends Component {
         page: "movie-person",
         activeName: name,
       });
-<<<<<<< HEAD
     } catch (error) {
       let errorMessage = error.response.data.error_message || error.message;
       this.setState({ message: errorMessage });
       setTimeout(() => {
         this.setState({ message: "" });
       }, 3000);
-    }
-  };
-
-  showTracked = async (e) => {
-    e.preventDefault();
-    let headers = sessionStorage.getItem("credentials");
-    headers = JSON.parse(headers);
-    try {
-      const response = await axios.get("/api/v1/user/", { headers: headers });
-      this.setState({ trackedInfo: response.data.data, page: "view-tracker" });
-    } catch (error) {
-      let errorMessage = error.response.data.error_message || error.message;
-      this.setState({ message: errorMessage });
-=======
-    } catch (error) {
-      let errorMessage = error.response.data.error_message || error.message;
-      this.setState({ message: errorMessage });
-      setTimeout(() => {
-        this.setState({ message: "" });
-      }, 3000);
->>>>>>> d589767997843ecb3fbe9c1a1334c458b636eecb
     }
   };
 
@@ -113,11 +80,7 @@ export class App extends Component {
       case "search":
         main = (
           <Search
-<<<<<<< HEAD
-            authenticated={true}
-=======
             authenticated={this.state.authenticated}
->>>>>>> d589767997843ecb3fbe9c1a1334c458b636eecb
             message={this.state.message}
             moviePersonShow={this.moviePersonShow}
             showTracked={this.showTracked}
@@ -128,9 +91,6 @@ export class App extends Component {
         );
         break;
       case "login":
-<<<<<<< HEAD
-        main = <Login />;
-=======
         main = (
           <Login
             goToPage={this.goToPage}
@@ -148,7 +108,6 @@ export class App extends Component {
             authenticated={this.state.authenticated}
           />
         );
->>>>>>> d589767997843ecb3fbe9c1a1334c458b636eecb
         break;
       case "movie-person":
         main = (
@@ -158,12 +117,6 @@ export class App extends Component {
             resetMoviePerson={this.resetMoviePerson}
           />
         );
-<<<<<<< HEAD
-        break;
-      case "view-tracker":
-        main = <ViewTracker trackedInfo={this.state.trackedInfo} />;
-=======
->>>>>>> d589767997843ecb3fbe9c1a1334c458b636eecb
         break;
       default:
         break;
@@ -172,16 +125,10 @@ export class App extends Component {
     return (
       <Container align="center">
         <AccountBar
-<<<<<<< HEAD
-          goToLoginPage={() => {
-            this.setState({ page: "login" });
-          }}
-=======
           goToPage={(page) => this.goToPage(page)}
           authenticated={this.state.authenticated}
           globalAuthHandler={this.globalAuthHandler}
           uid={this.state.uid}
->>>>>>> d589767997843ecb3fbe9c1a1334c458b636eecb
         />
         <h1 className="ui main header" style={{ margin: "60px" }}>
           Release Tracker
