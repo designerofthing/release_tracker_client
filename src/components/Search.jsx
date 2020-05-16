@@ -1,6 +1,6 @@
 import React from "react";
 
-const Search = ({ searchResult, searchReq }) => {
+const Search = ({ searchResult, searchReq, moviePersonSearch }) => {
   let imgPath;
   let sResult;
 
@@ -12,7 +12,17 @@ const Search = ({ searchResult, searchReq }) => {
           <td>
             <img src={imgPath} height="35" alt={result.name} />
           </td>
-          <td>{result.name}</td>
+          <td>
+            <a
+              data-id={result.id}
+              id={"track-" + result.id}
+              onClick={(e) => {
+                moviePersonSearch(e);
+              }}
+            >
+              {result.name}
+            </a>
+          </td>
           <td>{result.latestProd.movieName}</td>
           <td>{result.latestProd.year}</td>
           <td>{result.latestProd.role}</td>
@@ -22,15 +32,9 @@ const Search = ({ searchResult, searchReq }) => {
 
   return (
     <>
-      <form onSubmit={searchReq} >
-        <input
-          type="text"
-          id="search"
-          name="searchText"
-        />
-        <button type="submit">
-          Search
-        </button>
+      <form onSubmit={searchReq}>
+        <input type="text" id="search" name="searchText" />
+        <button type="submit">Search</button>
       </form>
       <div>{sResult}</div>
     </>
