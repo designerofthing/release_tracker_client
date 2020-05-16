@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Container, Image, Table, Segment, Grid} from "semantic-ui-react";
+import { Container, Image, Table } from "semantic-ui-react";
 import DefaultPicture from '../images/defaultpic.jpeg'
 import { addToTracked, removeFromTracked } from "../modules/tracking"
 
@@ -25,15 +25,18 @@ class Search extends Component {
 
   async trackHandler(id,add){
     if (add) {
-      const response = await addToTracked(id) //add this method in a module, module will grab credentials as header and send to backend
+      const response = await addToTracked(id)
       if (response.successful) {
         let searchResult = this.state.searchResult
         let index = searchResult.findIndex((result) => result.id == id )
         searchResult[index].tracked = true
         this.setState({ searchResult })
+      } else {
+        debugger
+        this.setState({message: response.error })
       }
     } else {
-      const response = await removeFromTracked(id) //add this method in a module, module will grab credentials as header and send to backend
+      const response = await removeFromTracked(id)
     }
   }
 
@@ -82,31 +85,20 @@ class Search extends Component {
       }));
   
     return (
-      <Grid relaxed fluid>
-        <Grid.Column>
-        </Grid.Column>
-        <Grid.Column width={5}>
-        <Segment style={{height: "100%"}}>{this.props.genresComp}</Segment>
-        </Grid.Column>
-        <Grid.Column>
-        </Grid.Column>
-        <Grid.Column width={8}>
-          <Container align="left">
-            <form onSubmit={this.searchReq} >
-              <input
-                type="text"
-                id="search"
-                name="searchText"
-              />
-              <button type="submit">
-                Search
-              </button>
-            </form>
-            <p id="message">{this.props.message}</p>
-            <Table padded compact>{sResult}</Table>
-          </Container>
-        </Grid.Column>
-      </Grid>
+      <Container align="left" style={{width: "50%"}}>
+        <form onSubmit={this.searchReq}>
+          <input
+            type="text"
+            id="search"
+            name="searchText"
+          />
+          <button type="submit">
+            Search
+          </button>
+        </form>
+        <p id="message">{this.state.message}<br />{this.props.message}</p>
+        <Table padded compact>{sResult}</Table>
+      </Container>
     );
 
   }

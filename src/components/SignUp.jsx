@@ -21,6 +21,7 @@ export default class SignUp extends Component {
     );
     if (response.authenticated) {
       this.props.globalAuthHandler(true);
+      this.props.goToPage("search")
     } else {
       this.setState({ signupMessage: response.message });
     }

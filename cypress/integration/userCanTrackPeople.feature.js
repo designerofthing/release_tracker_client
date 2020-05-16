@@ -2,30 +2,23 @@ describe('logged in users can track people', () => {
   beforeEach(() => {
     cy.server()
     cy.route({
-      method: 'POST',
-      url: 'http://localhost:3000/api/v1/trackers',
-      response: { message: "Successfully tracked!" }, 
-      headers: {
-        status: 200
-      }
-    })
-    cy.route({
       method: 'GET',
       url: 'http://localhost:3000/api/v1/search*',
       response: 'fixture:search_response.json',
     })
     cy.visit('/')
-    cy.get("input#search").type("Will Smith");
-    cy.get("button").contains("Search").click();
   })
 
-  it('not logged in user cannot see track button', () => {
-    cy.get('#result-item-2888').within(() => {
-      cy.get('button').contains('untrack').should('not.exist')
+  describe('visitor', () => {
+    it('cannot see track button', () => {
+      cy.get("input#search").type("Will Smith");
+      cy.get("button").contains("Search").click();
+      cy.get('#result-item-2888').should('not.contain',"untrack")
+      cy.get('#result-item-234120').should('not.contain',"track")
     })
   })
   
-  describe('successfully logged in user', () => {
+  describe('user', () => {
     beforeEach(() => {
       cy.server()
       cy.route({
@@ -36,15 +29,22 @@ describe('logged in users can track people', () => {
           status: 200
         }
       })
-      cy.get('#account-bar').within(() => {
-        cy.get('#login-link').click()
+      cy.route({
+        method: 'POST',
+        url: 'http://localhost:3000/api/v1/trackers',
+        response: { message: "Successfully tracked!" }, 
+        headers: {
+          status: 200
+        }
       })
+      cy.get('#login-link').click()
       cy.get("#login-form").within(() => {
         cy.get("#email").type("user@mail.com");
         cy.get("#password").type("password");
         cy.get("#submit").click();
       });
-      cy.get("#account-bar").should("contain", "Log out user@mail.com");
+      cy.get("input#search").type("Will Smith");
+      cy.get("button").contains("Search").click();
     })
 
     it('can see track button', () => {
@@ -63,7 +63,7 @@ describe('logged in users can track people', () => {
     })
 
     it('already tracked person has button saying "untrack"', () => {
-      cy.get('#result-item-234120').within(() => {
+      cy.get('#result-item-2888').within(() => {
         cy.get('button').should('contain', 'untrack')
       })
     })
@@ -72,18 +72,19 @@ describe('logged in users can track people', () => {
       cy.route({
         method: 'POST',
         url: 'http://localhost:3000/api/v1/trackers',
-        response: { message: "You have reached your track limit" }, 
-        headers: {
-          status: 200
-        }            
+        status: 402,
+        response: { 
+          message: "You have reached your track limit",
+          errors: ["You have reached your track limit"]
+        },          
       })
-      cy.get('#result-item-234120').first().within(() => {
+      cy.get('#result-item-234120').within(() => {
         cy.get('button').contains('track').click()
       })
       cy.get('#result-item-234120').first().within(() => {
         cy.get('button').should('contain', 'track')
       })
-      cy.get('#error-message').should('contain', 'You have reached your track limit')
+      cy.get('#message').should('contain', 'You have reached your track limit')
     })
   })
 })

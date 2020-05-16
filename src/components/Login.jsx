@@ -14,8 +14,8 @@ export default class Login extends Component {
     );
     if (response.authenticated) {
       this.props.globalAuthHandler(true);
+      this.props.goToPage("search")
     } else {
-      
       this.setState({ loginMessage: response.message });
     }
   };

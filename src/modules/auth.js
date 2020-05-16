@@ -26,19 +26,17 @@ const storeAuthCredentials = (headers) => {
 
 const register = async (email, password, password_confirmation) => {
   try {
-    const response = await axios.post("/api/v1/auth", {
+    const response = await axios.post("/api/v1/auth/sign_up", {
       email: email,
       password: password,
       password_confirmation: password_confirmation,
     });
     await storeAuthCredentials(response.data.data);
-    debugger
     return { authenticated: true };
   } catch (error) {
-debugger
     return {
       authenticated: false,
-      message: error.response.data.errors.full_messages[0],
+      message: error.response.data.error,
     };
   }
 };
