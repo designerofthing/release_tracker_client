@@ -8,7 +8,8 @@
         "release_date": "2022-10-02",
         "genre": ["Comedy", "Musical"],
         "image": "https://cdn3.iconfinder.com/data/icons/iconka-buddy-set/128/male_dummy_128.png",
-        "description": "stuff happened"
+        "description": "stuff happened",
+        "name": "Tom Hanks"
       },
       {
         "role": "Actor",
@@ -16,7 +17,26 @@
         "release_date": "2023-11-02",
         "genre": ["Thriller", "Musical"],
         "image": "https://cdn3.iconfinder.com/data/icons/iconka-buddy-set/128/male_dummy_128.png",
-        "description": "stuff happened"
+        "description": "stuff happened",
+        "name": "Tom Hanks"
+      },
+      {
+        "role": "Actor",
+        "title": "Will Smith's New Drama Movie",
+        "release_date": "2022-10-02",
+        "genre": ["Thriller", "Musical"],
+        "image": "https://cdn3.iconfinder.com/data/icons/iconka-buddy-set/128/male_dummy_128.png",
+        "description": "crazy stuff happened",
+        "name": "Will Smith"
+      },
+      {
+        "role": "Actor",
+        "title": "Will smith's New Comedy Movie",
+        "release_date": "2023-11-02",
+        "genre": ["Comedy", "Musical"],
+        "image": "https://cdn3.iconfinder.com/data/icons/iconka-buddy-set/128/male_dummy_128.png",
+        "description": "awesome stuff happened",
+        "name": "Will Smith"
       }
     ]
   }

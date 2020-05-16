@@ -1,4 +1,3 @@
-
 describe("User can view upcoming releases from tracked people", () => {
   beforeEach(() => {
     cy.server();
@@ -36,7 +35,7 @@ describe("User can view upcoming releases from tracked people", () => {
     cy.get("#release-item-3").within(() => {
       cy.contains("Will Smith's New Drama Movie");
       cy.contains("Tracked people: Will Smith");
-      cy.contains("Tracked genres: thriller, Musical");
+      cy.contains("Tracked genres: Thriller, Musical");
       cy.contains("2022-18-02");
       cy.contains("Actor");
       cy.contains("crazy stuff happened");
@@ -48,40 +47,8 @@ describe("User can view upcoming releases from tracked people", () => {
       cy.contains("Tracked genres: Comedy, Musical");
       cy.contains("2021-11-12");
       cy.contains("Actor");
-      cy.contains("Awesome stuff happened");
+      cy.contains("awesome stuff happened");
       cy.get("img").should("be.visible");
     });
-
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-  describe("user click on track", () => {
-    beforeEach(() => {
-      cy.server();
-      cy.route({
-        method: "PUT",
-        url: "http://localhost:3000/api/v1/movie_person/*",
-        response: { message: "Person tracked" },
-      });
-      cy.get("#track-1").click();
-      cy.get("#track-2").click();
-    });
-    it("User track first person", () => {
-      cy.get("#track-1").should("contain", "tracked");
-    });
-    it("User can track second person", () => {
-      cy.get("#track-2").should("contain", "tracked");
-    });
-  })
-})
+});
