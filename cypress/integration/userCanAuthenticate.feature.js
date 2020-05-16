@@ -1,4 +1,4 @@
-describe('User can authenticate', () => {
+describe("User can authenticate", () => {
   beforeEach(() => {
     cy.server();
     cy.visit("/");
@@ -7,9 +7,9 @@ describe('User can authenticate', () => {
   describe("User can login", () => {
     beforeEach(() => {
       cy.get("a#login-link").click();
-    })
+    });
 
-    it('successfully with the correct credentials', () => {
+    it("successfully with the correct credentials", () => {
       cy.route({
         method: "POST",
         url: "http://localhost:3000/api/v1/auth/sign_in",
@@ -41,21 +41,24 @@ describe('User can authenticate', () => {
         cy.get("#password").type("patsword");
         cy.get("#submit").click();
       });
-      cy.get("#login-message").should('contain', 'Invalid login credentials. Please try again.')
-    })
+      cy.get("#login-message").should(
+        "contain",
+        "Invalid login credentials. Please try again."
+      );
+    });
   });
 
   describe("User can register", () => {
     beforeEach(() => {
       cy.get("a#signup-link").click();
-    })
+    });
 
     it("successfully with good credentials", () => {
       cy.route({
         method: "POST",
         url: "http://localhost:3000/api/v1/auth/sign_up",
         status: 200,
-        response: 'fixture:register.json',
+        response: "fixture:register.json",
         headers: {
           uid: "user@mail.com",
         },
@@ -63,11 +66,11 @@ describe('User can authenticate', () => {
       cy.get("#signup-form").within(() => {
         cy.get("#email").type("newuser@mail.com");
         cy.get("#password").type("password123");
-        cy.get("#password_confirmation").type("password123")
+        cy.get("#password_confirmation").type("password123");
         cy.get("#submit").click();
       });
-      cy.get("#account-bar").should('contain', 'Log out newuser@mail.com')
-    })
+      cy.get("#account-bar").should("contain", "Log out newuser@mail.com");
+    });
 
     it("but unsuccessfully with bad credentials", () => {
       cy.route({
@@ -79,10 +82,10 @@ describe('User can authenticate', () => {
       cy.get("#signup-form").within(() => {
         cy.get("#email").type("newuser@mail.com");
         cy.get("#password").type("password123");
-        cy.get("#password_confirmation").type("pass696969")
+        cy.get("#password_confirmation").type("pass696969");
         cy.get("#submit").click();
       });
-      cy.get("#signup-message").should('contain', "Passwords don't match")
-    })
-  })
-})
+      cy.get("#signup-message").should("contain", "Passwords don't match");
+    });
+  });
+});

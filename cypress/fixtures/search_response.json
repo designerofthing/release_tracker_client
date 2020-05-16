@@ -5,40 +5,35 @@
       "name": "Will Smith",
       "picture": "/eze9FO9VuryXLP0aF2cRqPCcibN.jpg",
       "known_for_role": "Acting",
-      "known_for_movie": "Suicide Squad",
-      "tracked": true
+      "known_for_movie": "Suicide Squad"
     },
     {
       "id": 234120,
       "name": "William Smith",
       "picture": null,
       "known_for_role": "Acting",
-      "known_for_movie": "Paddington",
-      "tracked": false
+      "known_for_movie": "Paddington"
     },
     {
       "id": 102494,
       "name": "William G. Smith",
       "picture": null,
       "known_for_role": "Acting",
-      "known_for_movie": "Skeleton Key 2",
-      "tracked": false
+      "known_for_movie": "Skeleton Key 2"
     },
     {
       "id": 1771607,
       "name": "Wil Smith",
       "picture": null,
       "known_for_role": "Acting",
-      "known_for_movie": "Masterminds",
-      "tracked": false
+      "known_for_movie": "Masterminds"
     },
     {
       "id": 1994716,
       "name": "Wilma Smith",
       "picture": null,
       "known_for_role": "Directing",
-      "known_for_movie": "Magpie",
-      "tracked": true
+      "known_for_movie": "Magpie"
     }
   ]
 }
