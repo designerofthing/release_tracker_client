@@ -7,7 +7,7 @@ describe("User can track one person", () => {
       response: "fixture:search_response.json",
     });
     cy.visit("/");
-    cy.get("input#search").type("Tom Hanks");
+    cy.get("input#search").type("Will Smith");
     cy.get("button").contains("Search").click();
   });
 
@@ -19,12 +19,12 @@ describe("User can track one person", () => {
         url: "http://localhost:3000/api/v1/movie_person/*",
         response: "fixture:genres_selection1_response.json",
       });
-      cy.get("#track-1").click();
+      cy.get("#track-2888").click();
     });
     it("User can see upcoming releases first result", () => {
       cy.get("#release-item-1").within(() => {
-        cy.contains("Tom Hank's New Comedy Movie");
-        cy.contains("Tracked people: Tom Hanks");
+        cy.contains("Will Smith's New Comedy Movie");
+        cy.contains("Tracked people: Will Smith");
         cy.contains("Tracked genres: Comedy, Musical");
         cy.contains("2022-10-02");
         cy.contains("Actor");
@@ -34,8 +34,8 @@ describe("User can track one person", () => {
 
     it("User can see upcoming releases second result", () => {
       cy.get("#release-item-2").within(() => {
-        cy.contains("Tom Hank's New Thriller Movie");
-        cy.contains("Tracked people: Tom Hanks");
+        cy.contains("Will Smith's New Thriller Movie");
+        cy.contains("Tracked people: Will Smith");
         cy.contains("Tracked genres: Thriller, Musical");
         cy.contains("2023-11-02");
         cy.contains("Actor");
@@ -60,12 +60,12 @@ describe("User can track one person", () => {
         response: "fixture:genres_selection2_response.json",
       });
       cy.get("#thriller").click();
-      cy.get("#track-1").click();
+      cy.get("#track-2888").click();
     });
     it("User can see upcoming releases first result", () => {
       cy.get("#release-item-1").within(() => {
-        cy.contains("Tom Hank's New Comedy Movie");
-        cy.contains("Tracked people: Tom Hanks");
+        cy.contains("Will Smith's New Comedy Movie");
+        cy.contains("Tracked people: Will Smith");
         cy.contains("Tracked genres: Comedy, Musical");
         cy.contains("2022-10-02");
         cy.contains("Actor");
@@ -76,8 +76,8 @@ describe("User can track one person", () => {
 
     it("User can see upcoming releases second result", () => {
       cy.get("#release-item-2").within(() => {
-        cy.contains("Tom Hank's New Drama Movie");
-        cy.contains("Tracked people: Tom Hanks");
+        cy.contains("Will Smith's New Drama Movie");
+        cy.contains("Tracked people: Will Smith");
         cy.contains("Tracked genres: Drama, Musical");
         cy.contains("2023-11-02");
         cy.contains("Actor");
@@ -99,14 +99,18 @@ describe("User can track one person", () => {
       cy.route({
         method: "GET",
         url: "http://localhost:3000/api/v1/movie_person/*",
-        response: { error_message: "No result found!" },
+        response: { error_message: "No content found for that person" },
         status: 400,
       });
-      cy.get("#track-1").click();
+      cy.get("#track-2888").click();
     });
 
     it("gives error message", () => {
-      cy.get("#message").should("contain", "No result found!");
+      cy.get("#message").should("contain", "No content found for that person");
     });
+
+    it('error message dissapears after a few seconds', () => {
+      cy.get('#message').should('not.be.visible')
+    })
   });
 });

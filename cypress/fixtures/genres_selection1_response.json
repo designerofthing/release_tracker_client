@@ -4,7 +4,7 @@
     "movies": [
       {
         "role": "Actor",
-        "title": "Tom Hank's New Comedy Movie",
+        "title": "Will Smith's New Comedy Movie",
         "release_date": "2022-10-02",
         "genres": ["Comedy", "Musical"],
         "image": "https://cdn3.iconfinder.com/data/icons/iconka-buddy-set/128/male_dummy_128.png",
@@ -12,7 +12,7 @@
       },
       {
         "role": "Actor",
-        "title": "Tom Hank's New Thriller Movie",
+        "title": "Will Smith's New Thriller Movie",
         "release_date": "2023-11-02",
         "genres": ["Thriller", "Musical"],
         "image": "https://cdn3.iconfinder.com/data/icons/iconka-buddy-set/128/male_dummy_128.png",

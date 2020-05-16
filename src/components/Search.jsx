@@ -73,7 +73,8 @@ class Search extends Component {
                 }}
               >
               {result.name}
-            </a></Table.Cell>
+              </a>
+            </Table.Cell>
             <Table.Cell>{result.known_for_role === "Acting" ? "Actor" : "Director"} ({result.known_for_movie})</Table.Cell>
             {button}
           </Table.Row>
@@ -101,7 +102,7 @@ class Search extends Component {
                 Search
               </button>
             </form>
-            <p id="message">{this.state.message}</p>
+            <p id="message">{this.props.message}</p>
             <Table padded compact>{sResult}</Table>
           </Container>
         </Grid.Column>
@@ -109,53 +110,6 @@ class Search extends Component {
     );
 
   }
-
-  
-// const Search = ({ searchResult, searchReq, moviePersonShow }) => {
-//   let imgPath;
-//   let sResult;
-
-//   searchResult &&
-//     (sResult = searchResult.map((result) => {
-//       imgPath = result.pic;
-//       return (
-//         <tr key={"result-item-" + result.id} id={"result-item-" + result.id}>
-//           <td>
-//             <img src={imgPath} height="35" alt={result.name} />
-//           </td>
-//           <td>
-//             <a
-//               data-id={result.id}
-//               id={"track-" + result.id}
-//               onClick={(e) => {
-//                 moviePersonShow(e);
-//               }}
-//             >
-//               {result.name}
-//             </a>
-//           </td>
-//           <td>{result.latestProd.movieName}</td>
-//           <td>{result.latestProd.year}</td>
-//           <td>{result.latestProd.role}</td>
-//         </tr>
-//       );
-//     }));
-
-//   return (
-//     <>
-//       <form onSubmit={searchReq}>
-//         <input type="text" id="search" name="searchText" />
-//         <button type="submit">Search</button>
-//       </form>
-//       <div>{sResult}</div>
-//     </>
-//   );
-//         <input type="text" id="search" name="searchText" />
-//         <button type="submit">Search</button>
-//       </form>
-//       <div>{sResult}</div>
-//     </>
-//   );
 };
 
 export default Search;

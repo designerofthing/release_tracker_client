@@ -27,19 +27,16 @@ export class App extends Component {
         params: { genres: this.state.genresSelected },
       });
       let result = response.data.result.movies
-      if (result.length === 0){
-        this.setState({ message: "No content for that person"})
-      } else {
-        this.setState({ moviePersonResult: result, page: "movie-person", activeName: name})
-      }
+      this.setState({ moviePersonResult: result, page: "movie-person", activeName: name})
     } catch (error) {
       let errorMessage = error.response.data.error_message || error.message;
       this.setState({ message: errorMessage });
+      setTimeout(() => {this.setState({ message: ""})}, 3000)
     }
   };
   
   resetMoviePerson = () => {
-    this.setState({ moviePersonResult: [], activeName: "" });
+    this.setState({ moviePersonResult: [], activeName: "", page: "search" });
   };
 
   genresHandler = (e) => {
@@ -64,6 +61,7 @@ export class App extends Component {
         main = 
           <Search 
             authenticated = {true}
+            message={this.state.message}
             moviePersonShow={this.moviePersonShow}
             genresComp={<Genres genresHandler={this.genresHandler} />}
           />
