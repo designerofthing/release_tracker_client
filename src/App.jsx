@@ -76,7 +76,6 @@ export class App extends Component {
             moviePersonResult={this.state.moviePersonResult}
             activeName={this.state.activeName}
             resetMoviePerson={this.resetMoviePerson}
-            message={this.state.message}
           />
         ) : (
           <>

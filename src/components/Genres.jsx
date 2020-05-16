@@ -49,7 +49,7 @@ export class Genres extends Component {
           }}
           id="thriller"
           name="thriller"
-          className={this.state.thriller ? "active" : ""}
+          active={this.state.thriller ? "active" : ""}
           style={{ display: "block", width: "100px", marginTop: "10px" }}
         >
           Thriller

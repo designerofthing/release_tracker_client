@@ -46,7 +46,7 @@ describe("User can track one person", () => {
 
     it("User can go back to previous page", () => {
       cy.get("#btn-back").click();
-      cy.get("#header").should("contain", "Release Tracker");
+      cy.get("#release-header").should("not.contain", "Upcoming Releases");
       cy.get("button").should("contain", "Search");
     });
   });
@@ -59,7 +59,7 @@ describe("User can track one person", () => {
         url: "http://localhost:3000/api/v1/movie_person/*",
         response: "fixture:genres_selection2_response.json",
       });
-      cy.get("#drama").click();
+      cy.get("#thriller").click();
       cy.get("#track-1").click();
     });
     it("User can see upcoming releases first result", () => {
@@ -88,7 +88,7 @@ describe("User can track one person", () => {
 
     it("User can go back to previous page", () => {
       cy.get("#btn-back").click();
-      cy.get("#header").should("contain", "Release Tracker");
+      cy.get("#release-header").should("not.contain", "Upcoming Releases");
       cy.get("button").should("contain", "Search");
     });
   });

@@ -8,19 +8,23 @@ export class MoviePerson extends Component {
       let imgPath = result.image;
 
       return (
-        <div
-          id={
-            "release-item-" + (1 + this.props.moviePersonResult.indexOf(result))
-          }
-        >
-          <h2>{result.title}</h2>
-          <h3>{result.release_date}</h3>
-          <h3>Tracked people: {this.props.activeName}</h3>
-          <h3>{result.role}</h3>
-          <h3>Tracked genres: {result.genre.join(", ")}</h3>
-          <img src={imgPath} height="35" alt={result.title} />
-          <h4>{result.description}</h4>
-        </div>
+        <>
+          <h1 id="release-header">Upcoming Releases</h1>
+          <div
+            id={
+              "release-item-" +
+              (1 + this.props.moviePersonResult.indexOf(result))
+            }
+          >
+            <h2>{result.title}</h2>
+            <h3>{result.release_date}</h3>
+            <h3>Tracked people: {this.props.activeName}</h3>
+            <h3>{result.role}</h3>
+            <h3>Tracked genres: {result.genre.join(", ")}</h3>
+            <img src={imgPath} height="35" alt={result.title} />
+            <h4>{result.description}</h4>
+          </div>
+        </>
       );
     });
 
