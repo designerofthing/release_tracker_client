@@ -60,7 +60,7 @@ export class App extends Component {
   };
 
   resetMoviePerson = () => {
-    this.setState({ moviePersonResult: [] });
+    this.setState({ moviePersonResult: [], activeName: "" });
   };
 
   render() {
