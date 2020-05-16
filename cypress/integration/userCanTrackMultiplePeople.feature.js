@@ -7,7 +7,7 @@ describe("User can view upcoming releases from tracked people", () => {
       response: "fixture:tracked_page_response.json",
     });
     cy.visit("/");
-    cy.get("button").contains("View Your Tracker").click();
+    cy.get("#btn-tracker").click();
   });
 
   it("list of first tracked person releases", () => {

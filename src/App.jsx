@@ -3,6 +3,7 @@ import Search from "./components/Search";
 import Genres from "./components/Genres";
 import MoviePerson from "./components/MoviePerson";
 import AccountBar from "./components/AccountBar";
+import ViewTracker from "./components/ViewTracker";
 import Login from "./components/Login";
 import { Container } from "semantic-ui-react";
 import axios from "axios";
@@ -16,6 +17,7 @@ export class App extends Component {
     genresSelected: ["thriller", "drama", "comedy"],
     moviePersonResult: [],
     activeName: "",
+    trackedInfo: {},
   };
 
   moviePersonShow = async (e) => {
@@ -38,6 +40,19 @@ export class App extends Component {
       setTimeout(() => {
         this.setState({ message: "" });
       }, 3000);
+    }
+  };
+
+  showTracked = async (e) => {
+    e.preventDefault();
+    let headers = sessionStorage.getItem("credentials");
+    headers = JSON.parse(headers);
+    try {
+      const response = await axios.get("/api/v1/user/", { headers: headers });
+      this.setState({ trackedInfo: response.data.result });
+    } catch (error) {
+      let errorMessage = error.response.data.error_message || error.message;
+      this.setState({ message: errorMessage });
     }
   };
 
@@ -84,6 +99,9 @@ export class App extends Component {
             resetMoviePerson={this.resetMoviePerson}
           />
         );
+        break;
+      case "view-tracker":
+        main = <ViewTracker trackedInfo={this.state.trackedInfo} />;
         break;
       default:
         break;
