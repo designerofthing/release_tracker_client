@@ -11,6 +11,7 @@ export class App extends Component {
     genresSelected: ["thriller", "drama", "comedy"],
     moviePersonResult: [],
     activeName: "",
+    authenticated: true,
   };
 
   searchReq = async (e) => {
@@ -84,6 +85,9 @@ export class App extends Component {
               moviePersonSearch={this.moviePersonSearch}
             />
             <Genres genresHandler={this.genresHandler} />
+            {this.state.authenticated && (
+              <button onClick={this.showTracker}>View Your Tracker</button>
+            )}
           </>
         )}
 
