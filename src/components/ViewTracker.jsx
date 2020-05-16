@@ -24,12 +24,12 @@ export class ViewTracker extends Component {
             }
           >
             <h3>{result.title}</h3>
-            <h4>{result.release_date}</h4>
-            <h4>Tracked people: {result.name}</h4>
-            <h4>{result.role}</h4>
-            <h4>Tracked genres: {result.genres.join(", ")}</h4>
+            <p>{result.release_date}</p>
+            <p>Tracked people: {result.name}</p>
+            <p>{result.role}</p>
+            <p>Tracked genres: {result.genres.join(", ")}</p>
             <img src={imgPath} height="35" alt={result.title} />
-            <h4>{result.description}</h4>
+            <p>{result.description}</p>
           </div>
         </>
       );

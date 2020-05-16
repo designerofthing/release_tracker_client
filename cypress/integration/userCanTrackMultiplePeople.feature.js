@@ -6,7 +6,21 @@ describe("User can view upcoming releases from tracked people", () => {
       url: "http://localhost:3000/api/v1/user/",
       response: "fixture:tracked_page_response.json",
     });
+    cy.route({
+      method: "POST",
+      url: "http://localhost:3000/api/v1/auth/sign_in",
+      response: "fixture:login.json",
+      headers: {
+        status: 200,
+      },
+    });
     cy.visit("/");
+    cy.get("#login-link").click();
+    cy.get("#login-form").within(() => {
+      cy.get("#email").type("user@mail.com");
+      cy.get("#password").type("password");
+      cy.get("#submit").click();
+    });
     cy.get("#btn-tracker").click();
   });
 

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Container, Image, Table, Header } from "semantic-ui-react";
+import { Container, Image, Table, Header, Button } from "semantic-ui-react";
 import DefaultPicture from "../images/defaultpic.jpeg";
 import { addToTracked, removeFromTracked } from "../modules/tracking";
 
@@ -131,6 +131,11 @@ class Search extends Component {
             {sResult}
           </Table>
         </Container>
+        {this.props.authenticated && (
+          <Button id="btn-tracker" onClick={(e) => this.props.showTracked(e)}>
+            View Your Tracker
+          </Button>
+        )}
       </Container>
     );
   }

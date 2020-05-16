@@ -45,6 +45,19 @@ export class App extends Component {
     }
   };
 
+  showTracked = async (e) => {
+    e.preventDefault();
+    let headers = sessionStorage.getItem("credentials");
+    headers = JSON.parse(headers);
+    try {
+      const response = await axios.get("/api/v1/user/", { headers: headers });
+      this.setState({ trackedInfo: response.data.data, page: "view-tracker" });
+    } catch (error) {
+      let errorMessage = error.response.data.error_message || error.message;
+      this.setState({ message: errorMessage });
+    }
+  };
+
   resetMoviePerson = () => {
     this.setState({ moviePersonResult: [], activeName: "", page: "search" });
   };
@@ -120,7 +133,7 @@ export class App extends Component {
           />
         );
         break;
-      case "view-track":
+      case "view-tracker":
         main = <ViewTracker trackedInfo={this.state.trackedInfo} />;
         break;
       default:
