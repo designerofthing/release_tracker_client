@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Container, Image, Table } from "semantic-ui-react";
+import { Container, Image, Table, Header } from "semantic-ui-react";
 import DefaultPicture from "../images/defaultpic.jpeg";
 import { addToTracked, removeFromTracked } from "../modules/tracking";
 
@@ -115,19 +115,22 @@ class Search extends Component {
       }));
 
     return (
-      <Container align="left" style={{ width: "50%" }}>
-        <form onSubmit={this.searchReq}>
-          <input type="text" id="search" name="searchText" />
-          <button type="submit">Search</button>
-        </form>
-        <p id="message">
-          {this.state.message}
-          <br />
-          {this.props.message}
-        </p>
-        <Table padded compact>
-          {sResult}
-        </Table>
+      <Container>
+        <Header as="h4">Who do you want to track?</Header>
+        <Container align="left" style={{ width: "50%" }}>
+          <form onSubmit={this.searchReq}>
+            <input type="text" id="search" name="searchText" />
+            <button type="submit">Search</button>
+          </form>
+          <p id="message">
+            {this.state.message}
+            <br />
+            {this.props.message}
+          </p>
+          <Table padded compact>
+            {sResult}
+          </Table>
+        </Container>
       </Container>
     );
   }
