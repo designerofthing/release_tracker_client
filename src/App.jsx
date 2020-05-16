@@ -7,6 +7,7 @@ import MoviePerson from "./components/MoviePerson";
 import AccountBar from "./components/AccountBar";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
+import ViewTracker from "./components/ViewTracker";
 
 export class App extends Component {
   state = {
@@ -18,6 +19,7 @@ export class App extends Component {
     moviePersonResult: [],
     activeName: "",
     userTracked: [],
+    trackedInfo: {},
   };
 
   moviePersonShow = async (e) => {
@@ -117,6 +119,9 @@ export class App extends Component {
             resetMoviePerson={this.resetMoviePerson}
           />
         );
+        break;
+      case "view-track":
+        main = <ViewTracker trackedInfo={this.state.trackedInfo} />;
         break;
       default:
         break;
