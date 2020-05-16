@@ -1,0 +1,45 @@
+{
+  "user_id": 1,
+  "user_selection": [
+    {
+      "movie_person_id": 2888,
+      "movie_person_name": "Will Smith"
+    },
+    {
+      "movie_person_id": 1337,
+      "movie_person_name": "Uther Partybringer"
+    },
+    {
+      "movie_person_id": 12,
+      "movie_person_name": "Bob Ross"
+    },
+    {
+      "movie_person_id": 413,
+      "movie_person_name": "Darth Vader"
+    },
+    {
+      "movie_person_id": 2346,
+      "movie_person_name": "Boris Johnson"
+    },
+    {
+      "movie_person_id": 432,
+      "movie_person_name": "Jesus Christ"
+    },
+    {
+      "movie_person_id": 11,
+      "movie_person_name": "Duncan the Goofer"
+    },
+    {
+      "movie_person_id": 231,
+      "movie_person_name": "James Bond"
+    },
+    {
+      "movie_person_id": 342,
+      "movie_person_name": "Sauron Dark Lord"
+    },
+    {
+      "movie_person_id": 234120,
+      "movie_person_name": "William Smith"
+    }
+  ]
+}

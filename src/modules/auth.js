@@ -2,18 +2,18 @@ import axios from "axios";
 
 const authenticate = async (email, password) => {
   try {
-    const response = await axios.post("/auth/sign_in", {
+    const response = await axios.post("/api/v1/auth/sign_in", {
       email: email,
       password: password,
     });
-    await storeAuthCredentials(response);
+    await storeAuthCredentials(response.data.data);
     return { authenticated: true };
   } catch (error) {
     return { authenticated: false, message: error.response.data.errors[0] };
   }
 };
 
-const storeAuthCredentials = ({ headers }) => {
+const storeAuthCredentials = (headers) => {
   const credentials = {
     uid: headers["uid"],
     client: headers["client"],
@@ -26,17 +26,17 @@ const storeAuthCredentials = ({ headers }) => {
 
 const register = async (email, password, password_confirmation) => {
   try {
-    const response = await axios.post("/auth", {
+    const response = await axios.post("/api/v1/auth/sign_up", {
       email: email,
       password: password,
       password_confirmation: password_confirmation,
     });
-    await storeAuthCredentials(response);
+    await storeAuthCredentials(response.data.data);
     return { authenticated: true };
   } catch (error) {
     return {
       authenticated: false,
-      message: error.response.data.errors.full_messages[0],
+      message: error.response.data.error,
     };
   }
 };
@@ -51,11 +51,11 @@ const logOut = async () => {
   };
 
   try {
-    await axios.delete("/auth/sign_out", { headers: headers });
+    await axios.delete("/api/v1/auth/sign_out", { headers: headers });
     window.sessionStorage.removeItem("credentials");
     return { authenticated: false };
   } catch (error) {
-    console.log(error);
+    return error;
   }
 };
 

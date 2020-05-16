@@ -1,12 +1,38 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Container } from 'semantic-ui-react'
+import { logOut } from '../modules/auth'
 
-const AccountBar = ({goToLoginPage}) => {
-  return (
-    <Container align="right" style={{padding: "20px"}}>
-      <a onClick={goToLoginPage}>Login</a>
-    </Container>
-  )
+class AccountBar extends Component {
+  logout = async () => {
+    const response = await logOut()
+    if (!response.authenticated){
+      this.props.globalAuthHandler(false)
+    } else {
+      console.log("Something went wrong")
+    }
+  }
+
+  render() {
+    let { goToPage, authenticated } = this.props
+    let buttons;
+    if ( authenticated ) {
+
+      buttons = <a id="logout-link" onClick={() => goToPage('search')}>Log out {JSON.parse(sessionStorage.getItem("credentials")).uid}</a>
+    } else {
+      buttons = (
+        <nav>
+          <a id="login-link" onClick={() => goToPage('login')}>Login</a> |
+          <a id="signup-link" onClick={() => goToPage('signup')}> Sign Up</a>
+        </nav>
+      )
+    }
+
+    return (
+      <Container id="account-bar" align="right" style={{padding: "20px"}}>
+        {buttons}
+      </Container>
+    )
+  }
 }
 
-export default AccountBar
+export default AccountBar;
