@@ -2,10 +2,10 @@ describe("User can login", () => {
   beforeEach(() => {
     cy.server();
     cy.visit("/");
-    cy.get("#login").click();
+    cy.get("a#login-link").click();
   });
 
-  describe("with the correct credentials", () => {
+  it("with the correct credentials", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v1/auth/sign_in",
@@ -22,7 +22,7 @@ describe("User can login", () => {
     cy.get("#account-bar").should("contain", "Log out user@mail.com");
   });
   
-  describe("but not with incorrect credentials", () => {
+  it("but not with incorrect credentials", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v1/auth/sign_in",

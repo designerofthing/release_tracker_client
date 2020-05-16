@@ -4,6 +4,7 @@ import Genres from "./components/Genres";
 import MoviePerson from "./components/MoviePerson";
 import AccountBar from './components/AccountBar';
 import Login from './components/Login'
+import SignUp from './components/SignUp'
 import { Container } from 'semantic-ui-react'
 import axios from "axios"
 
@@ -54,6 +55,11 @@ export class App extends Component {
     }
   };
 
+  goToPage = (page) => {
+    debugger;
+    this.setState({ page: page })
+  }
+
   render() {
     let main;
     switch(this.state.page) {
@@ -67,8 +73,17 @@ export class App extends Component {
           />
         break;
       case "login":
-        main = <Login/>
+        main = <Login
+                goToPage={this.goToPage}
+                authenticated={this.state.authenticated}
+              />
         break;
+      case "signup":
+          main = <SignUp
+                  goToPage={this.goToPage}
+                  authenticated={this.state.authenticated}
+                />
+          break;
       case "movie-person":
         main = 
           <MoviePerson
@@ -83,7 +98,10 @@ export class App extends Component {
 
       return (
         <Container align="center">
-          <AccountBar goToLoginPage={() => {this.setState({ page: "login"})}}/>
+          <AccountBar 
+            goToPage={ page => this.goToPage(page) }
+            authenticated = { this.state.authenticated }
+          />
           <h1 className="ui main header" style={{margin: "60px"}}>Release Tracker</h1>
           {main}
           <p style={{position: "absolute", bottom: 10, right: 10}}>
