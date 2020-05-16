@@ -45,6 +45,14 @@ describe("logged in users can track people", () => {
           status: 200,
         },
       });
+      cy.route({
+        method: "DELETE",
+        url: "http://localhost:3000/api/v1/user_selection",
+        response: "fixture:user_selection.json",
+        headers: {
+          status: 200,
+        },
+      });
       cy.get("#login-link").click();
       cy.get("#login-form").within(() => {
         cy.get("#email").type("user@mail.com");
@@ -64,9 +72,9 @@ describe("logged in users can track people", () => {
     it("can click the button and get a response from server", () => {
       cy.get("#result-item-234120").within(() => {
         cy.get("button").contains("track").click();
-      });
-      cy.get("#result-item-234120").within(() => {
         cy.get("button").should("contain", "untrack");
+        cy.get("button").contains("untrack").click();
+        cy.get("button").should("contain", "track");
       });
     });
 
