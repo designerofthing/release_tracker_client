@@ -6,7 +6,7 @@
         "role": "Actor",
         "title": "Tom Hank's New Comedy Movie",
         "release_date": "2022-10-02",
-        "genre": ["Comedy", "Musical"],
+        "genres": ["Comedy", "Musical"],
         "image": "https://cdn3.iconfinder.com/data/icons/iconka-buddy-set/128/male_dummy_128.png",
         "description": "stuff happened"
       },
@@ -14,7 +14,7 @@
         "role": "Actor",
         "title": "Tom Hank's New Drama Movie",
         "release_date": "2023-11-02",
-        "genre": ["Drama", "Musical"],
+        "genres": ["Drama", "Musical"],
         "image": "https://cdn3.iconfinder.com/data/icons/iconka-buddy-set/128/male_dummy_128.png",
         "description": "stuff happened"
       }

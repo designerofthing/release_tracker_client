@@ -69,7 +69,7 @@ class Search extends Component {
                 data-id={result.id}
                 id={"track-" + result.id}
                 onClick={(e) => {
-                  moviePersonSearch(e);
+                  this.props.moviePersonShow(e);
                 }}
               >
               {result.name}
@@ -85,7 +85,7 @@ class Search extends Component {
         <Grid.Column>
         </Grid.Column>
         <Grid.Column width={5}>
-          <Segment style={{height: "100%"}}>Genre thing placeholder</Segment>
+        <Segment style={{height: "100%"}}>{this.props.genresComp}</Segment>
         </Grid.Column>
         <Grid.Column>
         </Grid.Column>
@@ -111,7 +111,7 @@ class Search extends Component {
   }
 
   
-// const Search = ({ searchResult, searchReq, moviePersonSearch }) => {
+// const Search = ({ searchResult, searchReq, moviePersonShow }) => {
 //   let imgPath;
 //   let sResult;
 
@@ -128,7 +128,7 @@ class Search extends Component {
 //               data-id={result.id}
 //               id={"track-" + result.id}
 //               onClick={(e) => {
-//                 moviePersonSearch(e);
+//                 moviePersonShow(e);
 //               }}
 //             >
 //               {result.name}
