@@ -1,37 +1,39 @@
 {
-  "result": [
+  "data": [
     {
-      "id": 1,
-      "name": "Tom Hanks",
-      "pic": "https://m.media-amazon.com/images/M/MV5BMTQ2MjMwNDA3Nl5BMl5BanBnXkFtZTcwMTA2NDY3NQ@@._V1_UY317_CR2,0,214,317_AL_.jpg",
-      "latestProd": {
-        "movieId": "765",
-        "movieName": "Cast Away",
-        "year": "2000",
-        "role": "Producer"
-      }
+      "id": 2888,
+      "name": "Will Smith",
+      "picture": "/eze9FO9VuryXLP0aF2cRqPCcibN.jpg",
+      "known_for_role": "Acting",
+      "known_for_movie": "Suicide Squad"
     },
     {
-      "id": 2,
-      "name": "Tom Hand",
-      "pic": "https://cdn3.iconfinder.com/data/icons/iconka-buddy-set/128/male_dummy_128.png",
-      "latestProd": {
-        "movieId": "987",
-        "movieName": "Scream 2",
-        "year": "1997",
-        "role": "Actor"
-      }
+      "id": 234120,
+      "name": "William Smith",
+      "picture": null,
+      "known_for_role": "Acting",
+      "known_for_movie": "Paddington"
     },
     {
-      "id": 3,
-      "name": "Jim Hanks",
-      "pic": "https://cdn3.iconfinder.com/data/icons/iconka-buddy-set/128/male_dummy_128.png",
-      "latestProd": {
-        "movieId": "123",
-        "movieName": "Abnormal Attraction",
-        "year": "2018",
-        "role": "Actor"
-      }
+      "id": 102494,
+      "name": "William G. Smith",
+      "picture": null,
+      "known_for_role": "Acting",
+      "known_for_movie": "Skeleton Key 2"
+    },
+    {
+      "id": 1771607,
+      "name": "Wil Smith",
+      "picture": null,
+      "known_for_role": "Acting",
+      "known_for_movie": "Masterminds"
+    },
+    {
+      "id": 1994716,
+      "name": "Wilma Smith",
+      "picture": null,
+      "known_for_role": "Directing",
+      "known_for_movie": "Magpie"
     }
   ]
 }

@@ -1,0 +1,65 @@
+[
+  {
+    "id": 31,
+    "movies": [
+      {
+        "title": "Greyhound",
+        "role": "Actor(Commander Ernest Krause, USN)",
+        "release_date": "2020-06-12",
+        "description": "A first-time captain leads a convoy of allied ships carrying thousands of soldiers across the treacherous waters of the “Black Pit” to the front lines of WW2. With no air cover protection for 5 days, the captain and his convoy must battle the surrounding enemy Nazi U-boats in order to give the allies a chance to win the war.",
+        "image": "https://image.tmdb.org/t/p/w154/eQJEXtDXpfEoDBRGkZ6LtPKacSl.jpg",
+        "genres": ["Action", "Drama", "War"]
+      },
+      {
+        "title": "BIOS",
+        "role": "Actor(Finch)",
+        "release_date": "2020-10-02",
+        "description": "On a post-apocalyptic Earth, a robot, built to protect the life of his dying creator's beloved dog, learns about life, love, friendship, and what it means to be human.",
+        "image": "https://image.tmdb.org/t/p/w154",
+        "genres": ["Drama", "Science Fiction"]
+      },
+      {
+        "title": "News of the World",
+        "role": "Actor(Captain Jefferson Kyle Kidd)",
+        "release_date": "2020-12-25",
+        "description": "A Texan traveling across the wild West bringing the news of the world to local townspeople, agrees to help rescue a young girl who was kidnapped.",
+        "image": "https://image.tmdb.org/t/p/w154/bqIUrgUfFYS62Dnyxn9KTLhSVWl.jpg",
+        "genres": ["Drama", "Western"]
+      },
+      {
+        "title": "Elvis",
+        "role": "Actor(Colonel Tom Parker)",
+        "release_date": "2021-11-05",
+        "description": "A biopic about Elvis Presley, with focus on his early years.",
+        "image": "https://image.tmdb.org/t/p/w154",
+        "genres": ["Drama", "Music"]
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "movies": [
+      {
+        "title": "I Still Believe",
+        "role": "Actor(Tom Camp)",
+        "release_date": "2020-03-12",
+        "description": "The true-life story of Christian music star Jeremy Camp and his journey of love and loss that looks to prove there is always hope.",
+        "image": "https://image.tmdb.org/t/p/w154/dqA2FCzz4OMmXLitKopzf476RVB.jpg",
+        "genres": ["Drama", "Music"]
+      }
+    ]
+  },
+  {
+    "id": 819,
+    "movies": [
+      {
+        "title": "The French Dispatch",
+        "role": "Actor()",
+        "release_date": "2020-10-14",
+        "description": "The staff of a European publication decides to publish a memorial edition highlighting the three best stories from the last decade: an artist sentenced to life imprisonment, student riots, and a kidnapping resolved by a chef.",
+        "image": "https://image.tmdb.org/t/p/w154/u0PhyuslumkTuqwFNfN3CQ2cuQw.jpg",
+        "genres": ["Comedy", "Drama", "Romance"]
+      }
+    ]
+  }
+]
