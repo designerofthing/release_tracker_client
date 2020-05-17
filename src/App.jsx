@@ -7,6 +7,7 @@ import MoviePerson from "./components/MoviePerson";
 import AccountBar from "./components/AccountBar";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
+import ViewTracker from "./components/ViewTracker";
 
 export class App extends Component {
   state = {
@@ -18,6 +19,7 @@ export class App extends Component {
     moviePersonResult: [],
     activeName: "",
     userTracked: [],
+    trackedInfo: {},
   };
 
   moviePersonShow = async (e) => {
@@ -40,6 +42,19 @@ export class App extends Component {
       setTimeout(() => {
         this.setState({ message: "" });
       }, 3000);
+    }
+  };
+
+  showTracked = async (e) => {
+    e.preventDefault();
+    let headers = sessionStorage.getItem("credentials");
+    headers = JSON.parse(headers);
+    try {
+      const response = await axios.get("/api/v1/user/", { headers: headers });
+      this.setState({ trackedInfo: response.data.data, page: "view-tracker" });
+    } catch (error) {
+      let errorMessage = error.response.data.error_message || error.message;
+      this.setState({ message: errorMessage });
     }
   };
 
@@ -83,6 +98,7 @@ export class App extends Component {
             authenticated={this.state.authenticated}
             message={this.state.message}
             moviePersonShow={this.moviePersonShow}
+            showTracked={this.showTracked}
             genresComp={<Genres genresHandler={this.genresHandler} />}
             userTracked={this.state.userTracked}
             setUserSelection={this.setUserSelection}
@@ -116,6 +132,9 @@ export class App extends Component {
             resetMoviePerson={this.resetMoviePerson}
           />
         );
+        break;
+      case "view-tracker":
+        main = <ViewTracker trackedInfo={this.state.trackedInfo} />;
         break;
       default:
         break;
