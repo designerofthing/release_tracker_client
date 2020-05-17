@@ -1,0 +1,54 @@
+body {
+  background-color: #1d4166;
+  font-family: "Montserrat Subrayada", sans-serif;
+  color: #bffc89;
+}
+
+h1.ui.header {
+  font-family: "Montserrat Subrayada", sans-serif;
+  color: #bffc89;
+  font-size: 80px;
+}
+h2 {
+  font-family: "Montserrat Subrayada", sans-serif;
+  color: #bffc89;
+}
+
+h4.ui.header {
+  font-family: "Montserrat Subrayada", sans-serif;
+  color: #bffc89;
+}
+p {
+  font-family: "Montserrat Subrayada", sans-serif;
+  color: #bffc89;
+}
+.ui.form .field > label {
+  color: #bffc89;
+}
+
+input#search,
+input#email,
+input#password,
+input#password_confirmation {
+  background-color: #1f5f8b;
+  border-color: #1f5f8b;
+}
+div.ui.input {
+  color: #bffc89;
+  width: 50%;
+  float: left;
+}
+
+::placeholder {
+  color: #bffc89;
+}
+
+.ui.button {
+  background-color: #1f5f8b;
+  font-family: "Montserrat Subrayada", sans-serif;
+  color: #bffc89;
+}
+
+ui.compact.padded.table {
+  border-color: #1f5f8b;
+}

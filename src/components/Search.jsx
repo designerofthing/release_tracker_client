@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Container, Image, Table, Header, Button } from "semantic-ui-react";
+import {
+  Container,
+  Image,
+  Input,
+  Table,
+  Header,
+  Button,
+} from "semantic-ui-react";
 import DefaultPicture from "../images/defaultpic.jpeg";
 import { addToTracked, removeFromTracked } from "../modules/tracking";
 
@@ -50,7 +57,6 @@ class Search extends Component {
 
     searchResult &&
       (sResult = searchResult.map((result) => {
-        debugger;
         if (this.props.authenticated && !trackedIds.includes(result.id)) {
           button = (
             <td>
@@ -119,8 +125,17 @@ class Search extends Component {
         <Header as="h4">Who do you want to track?</Header>
         <Container align="left" style={{ width: "50%" }}>
           <form onSubmit={this.searchReq}>
-            <input type="text" id="search" name="searchText" />
-            <button type="submit">Search</button>
+            <Input
+              fluid
+              size="small"
+              type="text"
+              id="search"
+              name="searchText"
+              placeholder="Search for actors, actresses or directors..."
+            />
+            <Button size="small" class="ui button" type="submit">
+              Search
+            </Button>
           </form>
           <p id="message">
             {this.state.message}

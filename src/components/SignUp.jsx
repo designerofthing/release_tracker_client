@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { register } from "../modules/auth";
+import { Form, Input, Button } from "semantic-ui-react";
 
 export default class SignUp extends Component {
   state = {
@@ -32,20 +33,28 @@ export default class SignUp extends Component {
       <>
         <div>
           <h2>Sign up</h2>
-          <form id="signup-form" onSubmit={this.onSignup}>
-            <label for="email">Email</label>
-            <input name="email" type="email" id="email"></input>
-            <label for="password">Password</label>
-            <input name="password" type="password" id="password"></input>
-            <label for="password_confirmation">Password confirmation</label>
-            <input
-              name="password_confirmation"
-              type="password"
-              id="password_confirmation"
-            ></input>
-            <button id="submit">Submit</button>
+          <Form id="signup-form" onSubmit={this.onSignup}>
+            <Form.Group widths="equal">
+              <Form.Field>
+                <label for="email">Email</label>
+                <Input name="email" type="email" id="email"></Input>
+              </Form.Field>
+              <Form.Field>
+                <label for="password">Password</label>
+                <Input name="password" type="password" id="password"></Input>
+              </Form.Field>
+              <Form.Field>
+                <label for="password_confirmation">Password confirmation</label>
+                <Input
+                  name="password_confirmation"
+                  type="password"
+                  id="password_confirmation"
+                ></Input>
+              </Form.Field>
+            </Form.Group>
+            <Button id="submit">Submit</Button>
             <p id="signup-message">{this.state.signupMessage}</p>
-          </form>
+          </Form>
         </div>
         <div>
           {" "}

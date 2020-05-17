@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { authenticate } from "../modules/auth";
 import { getUserSelection } from "../modules/tracking";
+import { Form, Input, Button } from "semantic-ui-react";
 
 export default class Login extends Component {
   state = {
@@ -28,14 +29,20 @@ export default class Login extends Component {
       <>
         <div>
           <h2>Log in</h2>
-          <form id="login-form" onSubmit={this.onLogin}>
-            <label for="email">Email</label>
-            <input name="email" type="email" id="email"></input>
-            <label for="password">Password</label>
-            <input name="password" type="password" id="password"></input>
-            <button id="submit">Submit</button>
+          <Form id="login-form" onSubmit={this.onLogin}>
+            <Form.Group widths="equal">
+              <Form.Field>
+                <label for="email">Email</label>
+                <Input name="email" type="email" id="email"></Input>
+              </Form.Field>
+              <Form.Field>
+                <label for="password">Password</label>
+                <Input name="password" type="password" id="password"></Input>
+              </Form.Field>
+            </Form.Group>
+            <Button id="submit">Submit</Button>
             <p id="login-message">{this.state.loginMessage}</p>
-          </form>
+          </Form>
         </div>
         <div>
           {" "}
